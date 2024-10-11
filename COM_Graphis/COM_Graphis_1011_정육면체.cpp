@@ -154,7 +154,7 @@ void MyDisplay() {
     glViewport(0, 0, 300, 300);
     glCallList(MyListID);
     glCallList(MyListID2);
-    glCallList(MyListID3);
+    glCallList(MyListID3);  // 이부분
     glFlush();
 }
 
