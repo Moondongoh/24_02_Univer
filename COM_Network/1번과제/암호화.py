@@ -17,8 +17,18 @@ alp_s= []
 key_s= []
 
 # 암호화할 파일을 읽어서 저장
-f= open('D:/Git_Hub/24_02_Univer/COM_Network/1번과제/test.txt', 'r')
-sen= f.read()
+# 첫 번째 파일에서 내용을 읽고 소문자로 변환
+f = open('D:/Git_Hub/24_02_Univer/COM_Network/1번과제/test.txt', 'r')
+sen = f.read().lower()  # 함수 호출에 괄호 필요
+f.close()
+
+# 두 번째 파일에 내용을 쓰기
+f = open('D:/Git_Hub/24_02_Univer/COM_Network/1번과제/key.txt', 'w')
+for i in sen:
+    f.write(i)  # sen의 각 문자를 파일에 기록
+f.close()
+
+f= open('D:/Git_Hub/24_02_Univer/COM_Network/1번과제/test.txt', 'r')    
 sen= list(sen)
 for i in sen:
     if i in alp:  
@@ -32,35 +42,35 @@ f.close()
 
 print(alp)
 
-# # 암호화 
-# alp_s= sorted(alp, key=lambda x: alp[x], reverse=True)
-# f= open('D:/Git_Hub/24_02_Univer/COM_Network/1번과제/encode.txt', 'w')
-# for i in sen:
-#     if 96< ord(i) < 123: 
-#         temp= ord(i) - 97 
-#         f.write(alp_s[temp])  
-#     else:
-#         f.write(i)
-# f.close()
+# 암호화 
+alp_s= sorted(alp, key=lambda x: alp[x], reverse=True)
+f= open('D:/Git_Hub/24_02_Univer/COM_Network/1번과제/encode.txt', 'w')
+for i in sen:
+    if 96< ord(i) < 123: 
+        temp= ord(i) - 97 
+        f.write(alp_s[temp])  
+    else:
+        f.write(i)
+f.close()
 
-# # 해독하기 위해 키 파일 읽어오기
-# f= open('D:/Git_Hub/24_02_Univer/COM_Network/1번과제/key.txt', 'r')
-# temp= f.read()
-# key_s= temp.split('\n')
-# for i in range(0, 26):
-#     alp[alpabet[i]] = int(key_s[i])
-# dec_alp= sorted(alp, key=lambda x: alp[x], reverse=True)
-# # 해독할 파일 내용 읽어오기
-# f= open('D:/Git_Hub/24_02_Univer/COM_Network/1번과제/encode.txt', 'r')
-# password= f.read()
-# f.close()
-# # 키 값을 이용해 복호화 시작
-# f= open('D:/Git_Hub/24_02_Univer/COM_Network/1번과제/decode.txt', 'w')
-# for i in password:
-#     if 96< ord(i) < 123: 
-#         for j in range(0, 26):
-#             if i== dec_alp[j]:  
-#                 f.write(alpabet[j])  
-#     else:
-#         f.write(i)
-# f.close()
+# 해독하기 위해 키 파일 읽어오기
+f= open('D:/Git_Hub/24_02_Univer/COM_Network/1번과제/key.txt', 'r')
+temp= f.read()
+key_s= temp.split('\n')
+for i in range(0, 26):
+    alp[alpabet[i]] = int(key_s[i])
+dec_alp= sorted(alp, key=lambda x: alp[x], reverse=True)
+# 해독할 파일 내용 읽어오기
+f= open('D:/Git_Hub/24_02_Univer/COM_Network/1번과제/encode.txt', 'r')
+password= f.read()
+f.close()
+# 키 값을 이용해 복호화 시작
+f= open('D:/Git_Hub/24_02_Univer/COM_Network/1번과제/decode.txt', 'w')
+for i in password:
+    if 96< ord(i) < 123: 
+        for j in range(0, 26):
+            if i== dec_alp[j]:  
+                f.write(alpabet[j])  
+    else:
+        f.write(i)
+f.close()
