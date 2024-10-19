@@ -148,11 +148,12 @@ data_plus_zeros = user_input2 + '0' * Max_num
 # 결과 출력
 print(f"전송 데이터 값 (최고차항 수만큼 0 추가): {data_plus_zeros}")
 
-print(data_plus_zeros)
-print(binary_output_str)
+#print(data_plus_zeros)
+#print(binary_output_str)
 
-def crc(data_plus_zeros, binary_output_str):
+def crc(data_plus_zeros, binary_output_str,cnt =1):
     bcal = ""
+    
     key = binary_output_str
     if len(binary_output_str) > len(data_plus_zeros):
         return data_plus_zeros
@@ -166,11 +167,12 @@ def crc(data_plus_zeros, binary_output_str):
             bcal += "0"
         else :
             bcal += "1"
-
+    print("연산["+str(cnt)+"회]""값",bcal)
     bcal = bcal[bcal.find("1"):] # 1을 찾아서 자름
-    return crc(bcal, key)
+    cnt +=1
+    return crc(bcal, key, cnt)
 
 result = crc(data_plus_zeros, binary_output_str)
-print(Max_num)
+#print(Max_num)
 data_plus_zeros = user_input2 + '0' * (Max_num-1)
 print("결과", data_plus_zeros+result)
