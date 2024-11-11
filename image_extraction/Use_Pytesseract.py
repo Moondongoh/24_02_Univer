@@ -18,7 +18,7 @@
 from PIL import Image
 import pytesseract
 
-image_path = "D:/Git_Hub/24_02_Univer/image_extraction/i have a dream001.jpg"
+image_path = "D:/Git_Hub/24_02_Univer/image_extraction/죽는 날까지 하늘을 우러러001.png"
 
 pytesseract.pytesseract.tesseract_cmd = r'C:\Users\Moon\AppData\Local\tesseract.exe'
 
