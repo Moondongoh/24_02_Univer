@@ -103,9 +103,7 @@
 # data_plus_zeros = user_input2 + '0' * (Max_num-1)
 # print("결과", data_plus_zeros+result)
 
-
 Max_num =0
-
 def poly_to_binary(polynomial):
     # 항을 '+' 기준으로 분리
     terms = polynomial.replace(' ', '').split('+')
@@ -148,9 +146,6 @@ data_plus_zeros = user_input2 + '0' * Max_num
 # 결과 출력
 print(f"전송 데이터 값 (최고차항 수만큼 0 추가): {data_plus_zeros}")
 
-#print(data_plus_zeros)
-#print(binary_output_str)
-
 def crc(data_plus_zeros, binary_output_str,cnt =1):
     bcal = ""
     
@@ -173,6 +168,5 @@ def crc(data_plus_zeros, binary_output_str,cnt =1):
     return crc(bcal, key, cnt)
 
 result = crc(data_plus_zeros, binary_output_str)
-#print(Max_num)
 data_plus_zeros = user_input2 + '0' * (Max_num-1)
 print("결과", data_plus_zeros+result)
