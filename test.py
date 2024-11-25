@@ -1,4 +1,6 @@
 print("Hello World")
 print("Hello Python")
+print("C")
+print("C++")
 print("Hello Linux")
 print("Hello AS")
